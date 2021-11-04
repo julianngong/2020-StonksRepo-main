@@ -1,0 +1,160 @@
+body {
+    background-image: url(../stockchart.jpg);
+    filter: brightness(140%);
+    font-family: Arial;
+    color: white;
+    padding-right: 1%;
+    padding-left: 1%;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    align-items: center;
+    background-color: rgba(4, 11, 46, 0.137);
+    border-radius: 5px;
+}
+
+.lines {
+    margin: 1%;
+}
+
+p {
+    font-size: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(252, 36, 36);
+}
+
+a:visited {
+    background-color: transparent;
+    text-decoration: none;
+    color: salmon;
+}
+
+a:hover {
+    color: red;
+    /* background-color: #ddd; */
+    text-decoration: underline;
+}
+
+.stonks-image {
+    display: flex;
+    flex: 1;
+    padding-top: 60px;
+}
+
+h1 {
+    margin-top: 5%;
+    font-size: 40px;
+    color: rgb(158, 23, 140);
+}
+
+h2 {
+    font-size: 37px;
+    color: cyan;
+}
+
+.section1 {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    min-height: 90vh;
+    align-items: left;
+    color: white;
+}
+
+.introduction {
+    margin-top: 5%;
+    flex: 1;
+}
+
+.intro-text span {
+    display: inline-block;
+    margin-top: 1%;
+    flex: 1;
+    font-size: 50px;
+    font-weight: 500;
+    color: rgb(158, 23, 140);
+    animation: mover 2s linear infinite;
+}
+
+@keyframes mover {
+    0% {
+        text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(0, 0, 0, 30);
+        transform: translateY(30px);
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(0, 0, 0, 0);
+    }
+}
+
+.intro-text p {
+    margin-top: 5px;
+    font-size: 31px;
+    color: white;
+}
+
+.stonksmeme-image {
+    margin: auto;
+    display: flex;
+    /* flex: 1; */
+    height: 60vh;
+    border: 7px solid black;
+}
+
+.sections2-5 {
+    display: flex;
+    /* background-color: white; */
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    /* margin: 1%;
+    margin-top: 5%; */
+    margin: auto;
+}
+
+.start {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+
+#myButton {
+    background-color: green;
+    color: white;
+    font-size: 45px;
+    border-radius: 6px;
+    margin-bottom: 4%;
+    cursor: pointer;
+}
+
+#myButton:hover {
+    background-color: #0d1117f3
+}
+
+#myButton:checked {
+    background-color: white
+}
+
+#myButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+footer {
+    margin: auto;
+    font-size: small;
+}
+
+.developers {
+    text-align: right;
+}

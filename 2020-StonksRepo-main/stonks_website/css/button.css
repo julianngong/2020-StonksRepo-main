@@ -1,0 +1,27 @@
+button {
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    border-radius: 6px;
+    margin: 2%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0d1117f3
+}
+
+button:checked {
+    background-color: white
+}
+
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.dark-mode {
+    background-color: #0d1117f3;
+    color: white;
+}

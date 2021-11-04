@@ -1,0 +1,338 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../STONKS.png">
+    <title>Documentation</title>
+    <link rel="stylesheet" href="../css/documentation.css" />
+
+</head>
+
+<body>
+    <div class="introduction">
+        <h1>Documentation for the interactions with the Stonks Server</h1>
+        <p>
+            Messages to the Server take the form of various HTTP requests, which can then return JSON objects back for your bot to process. Assuming you are using python for your bot, there are already functions for sending and parsing data to and from the server,
+            so we recommend using python to build your bot.
+        </p>
+    </div>
+    <div class="registering-bot">
+        <h2>For registering a new bot from code</h2>
+        <table>
+            <tr>
+                <th>Function name</th>
+                <th> Description </th>
+                <th> Detail link </th>
+            </tr>
+            <tr>
+                <td>is_bot_name_valid</td>
+                <td>
+                    Checks if the name requested is a valid name for a bot. This takes into account characters used and the names of other current bots (no duplicates)
+                </td>
+                <td><a href="#is_bot_name_valid">link</a></td>
+            </tr>
+            <tr>
+                <td>add_bot</td>
+                <td>
+                    Registers a new bot into the system, giving it the start amount of money and allowing you to send it instructions
+                </td>
+                <td><a href="#add_bot">link</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="info-for-market">
+        <h2>Getting information on the stock market</h2>
+        <table>
+            <tr>
+                <th>Function name</th>
+                <th> Description </th>
+                <th> Detail link </th>
+            </tr>
+            <tr>
+                <td>get_stonk_list</td>
+                <td>
+                    Returns the list of stocks and their prices from the stock market
+                </td>
+                <td><a href="#get_stonk_list">link</a></td>
+            </tr>
+            <tr>
+                <td>get_stonk_price</td>
+                <td>
+                    Returns the current price of the requested stock
+                </td>
+                <td><a href="#get_stonk_price">link</a></td>
+            </tr>
+            <tr>
+                <td>get_stonk_history</td>
+                <td>
+                    Returns a history of the stocks prices over time
+                </td>
+                <td><a href="#get_stonk_history">link</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="controlling-bot">
+        <h2>For controlling your bot</h2>
+        <table>
+            <tr>
+                <th>Function name</th>
+                <th> Description </th>
+                <th> Detail link </th>
+            </tr>
+            <tr>
+                <td>get_bot_info</td>
+                <td>
+                    Returns information about the bot. How much money does it have on hand? How many stocks does it own? What companies in? etc.
+                </td>
+                <td><a href="#get_bot_info">link</a></td>
+            </tr>
+            <tr>
+                <td>buy_stonks</td>
+                <td>
+                    Orders the bot to buy the requested amount of the requested stock. Fails if you do not have the money or if you have currently shorted that stock already.
+                </td>
+                <td><a href="#buy_stonks">link</a></td>
+            </tr>
+            <tr>
+                <td>sell_stonks</td>
+                <td>
+                    Orders the bot to sell the requested amount of the requested stock. Fails if you do not own the required amount of the stock.
+                </td>
+                <td><a href="#sell_stonks">link</a></td>
+            </tr>
+            <tr>
+                <td>short_stonk</td>
+                <td>
+                    Orders the bot to short the requested stock. Fails if you already own shares in the requested stock.
+                </td>
+                <td><a href="#short_stonk">link</a></td>
+            </tr>
+            <tr>
+                <td>cover_stonk</td>
+                <td>
+                    Covers shorts on the requested stock. Fails if you don't have enough money to short it.
+                </td>
+                <td><a href="#cover_stonk">link</a></td>
+            </tr>
+            <tr>
+                <td>get_interest_on_shorts</td>
+                <td>
+                    Returns information on the interest on your current shorts. How long until you have to pay interest/ how much interest do you have to pay if you covered it right now.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <hr><br>
+    <div class="definitions">
+        <h2>Definitions for functions</h2>
+        <div id="is_bot_name_valid">
+            <h3>is_bot_name_valid</h3>
+            <p>
+                Example request: '<code>/is_bot_name_valid?botName=------</code>'', where --- is replaced with the requested bot name. Returns a boolean in JSON format. If there is no bot with that name and there are no esoteric characters in the name,
+                it returns true. Otherwise it returns false.
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "result"      : false,
+                        "information" : "Bot name already exists"
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <br>
+        <div id="add_bot">
+            <h3>add_bot</h3>
+            <p>
+                Registers the requsted bot to the stock market. You need to input a team name and code (think username and password). This will be used to authenticate requests in the future. Example request: '<code>/add_bot?teamName=-----&teamCode=-----&botName=-----</code>'
+                where ---'s are replaced with the values for the arguments. The bot name can be tested first using <a href="#is_bot_name_valid">is_bot_name_valid</a>.
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "result"      : true,
+                        "information" : "Bot successfully added"
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <br>
+        <div id="get_stonk_list">
+            <h3>get_stonk_list</h3>
+            <p>
+                Returns a list of stocks and their current prices. Example request: '<code>/get_stonk_list</code>'. There are no arguments.
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "list" : [
+                            {
+                                "name"  : "Apple",
+                                "price" : 1207.4
+                            },
+                            {
+                                "name"  : "Game Stop",
+                                "price" : 3000
+                            }
+                        ]
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <br>
+        <div id="get_stonk_price">
+            <h3>get_stonk_price</h3>
+            <p>
+                Returns the price of the requested stock. Example request: '<code>/get_stonk_price?stonkName=-----</code>'. Replace ----- with the name of the requested stock.
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "stockExisted" : true,
+                        "stonkPrice"   : 729.7
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <div id="get_stonk_history">
+            <h3>get_stonk_history</h3>
+            <p>
+                Returns the price history of the requested stock. Example request: '<code>/get_stonk_history?stonkName=-----&historyLength=-----</code>'. Replace -----'s with arguments. historyLength takes an integer, which will be how many values since
+                the present it returns. Assume that the stock price updates every two seconds. The values will be ordered from least to most recent
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "stockExisted" : true,
+                        "values"       : [230, 235, 270, 264, 244]
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <div id="get_bot_info">
+            <h3>get_bot_info</h3>
+            <p>
+                Returns the values and shorts of the stocks owned by the bot. Example request: '<code>/get_bot_info?teamName=-----&teamCode=-----</code>'. Replace the -----'s with your teams credentials that you set up in <a href="#add_bot">add_bot</a>.
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "botExists"    : true,
+                        "currentValue" : 13054,
+                        "currentCash"  : 9000,
+                        "ownedStocks"  : [
+                            {
+                                "stockName"    : "Game Stop",
+                                "numberOwned"  : 3,
+                                "valueOfOwned" : 2022
+                            },
+                            {
+                                "stockName"    : "Walmart",
+                                "numberOwned"  : 9,
+                                "valueOfOwned" : 3032
+                            }
+                        ],
+                        "shortedStocks" : [
+                            {
+                                "stockName"            : "Nvidea",
+                                "numberShorted"        : 2
+                                "costToCoverNow"       : 920
+                                "interestPayedToCover" : 80
+                            }
+                        ]
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <div id="buy_stonks">
+            <h3>buy_stonks</h3>
+            <p>
+                Orders the specified bot to buy a number of shares in a company at market price. Example request: '
+                <code>
+                /buy_stonks?teamName=-----&teamCode=-----&stonkName=-----&stonkAmount=-----
+            </code>'. The ---'s should be replaced with the relevent values for your bot, the name of the stock (see <a href="#get_stonk_list">get_stonk_list</a>), and an integer amount of stocks to buy. This may fail if your team credentials
+                are invalid, you have already shorted this stock, or if you have insufficient funds for the transaction.
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "succeeded"         : true,
+                        "stockExisted"      : true,
+                        "hadRequisitFunds"  : true,
+                        "errorMessage"      : ""
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <div id="sell_stonks">
+            <h3>sell_stonks</h3>
+            <p>
+                Orders the specified bot to sell a specific number of a certain stock. Example request: '
+                <code>
+                /sell_stonks?teamName=-----&teamCode=-----&stonkName=-----&stonkAmount=-----
+            </code>'. The ---'s should be replaced with the relevent values for your bot, the name of the stock (see <a href="#get_stonk_list">get_stonk_list</a>), and an integer amount of stocks to sell. This may fail if your team credentials
+                are invalid or you have less than the requested number of stock.
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "succeeded"             : true,
+                        "stockExisted"          : true,
+                        "hadRequisitNumOfStocks": true,
+                        "errorMessage"          : ""
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <div id="short_stonk">
+            <h3>short_stonk</h3>
+            <p>
+
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "succeeded"             : true,
+                        "stockExisted"          : true,
+                        "minutesUntilInterest"  : 13,
+                        "errorMessage"          : ""
+                    }
+                </code>
+            </pre>
+        </div>
+        <hr>
+        <div id="cover_stonk">
+            <h3>cover_stonk</h3>
+            <p>
+
+            </p>
+            <p>Example response:</p>
+            <pre>
+                <code>
+                    {
+                        "succeeded"             : true,
+                        "stockExisted"          : true,
+                        "hadSufficientFunds"    : true,
+                        "errorMessage"          : ""
+                    }
+                </code>
+            </pre>
+        </div>
+    </div>
+</body>

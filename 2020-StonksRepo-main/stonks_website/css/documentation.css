@@ -1,0 +1,41 @@
+body {
+    font-size: 17px;
+    margin: 2%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    background-color: transparent;
+    text-decoration: none;
+    color: darksalmon;
+}
+
+a:hover {
+    color: blue;
+    /* background-color: #ddd; */
+    text-decoration: underline;
+}
+
+h3 {
+    color: darkcyan;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    width: flex;
+    border-collapse: collapse;
+    border-style: solid;
+    font-size: inherit;
+    text-align: center;
+    margin: 0px 15px 0px 15px;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

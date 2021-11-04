@@ -1,0 +1,126 @@
+body {
+    background: white;
+    font-family: Roboto;
+    color: black;
+    box-sizing: border-box;
+    font-size: large;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    padding: 3px;
+    align-items: center;
+    background-color: #1d232cda;
+    border-radius: 0px;
+    display: flex;
+    margin: -8px;
+}
+
+.main {
+    padding: 1%;
+}
+
+.below-navbar {
+    padding: 1%;
+}
+
+h1,
+h2 {
+    margin: 2%;
+    text-align: center;
+    font-size: 32px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    /* background-color: #ddd; */
+    text-decoration: underline;
+}
+
+
+/* Set additional styling options for the columns */
+
+.column {
+    float: left;
+}
+
+
+/* Set width length for the left and right columns */
+
+.left {
+    width: 80%;
+}
+
+.right {
+    width: 20%;
+    border-radius: 3%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column-right {
+    border-radius: 3%;
+    background-color: #3cdd14ad;
+    font-size: "larger";
+    height: 550px;
+    overflow: auto;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+    border-style: solid;
+    font-size: large;
+    padding: 5%;
+    text-align: center;
+}
+
+table tr:hover {
+    background-color: grey;
+}
+
+#transactionHistory {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#transactionHistory td,
+#transactionHistorys th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+#transactionHistory tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#transactionHistory tr:hover {
+    background-color: grey;
+}
+
+#transactionHistory th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: green;
+    color: white;
+}

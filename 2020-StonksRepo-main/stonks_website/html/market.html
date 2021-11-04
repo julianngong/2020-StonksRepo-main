@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market</title>
+    <link rel="stylesheet" href="../css/market.css" />
+    <link rel="stylesheet" href="../css/nav-bar.css" />
+    <link rel="stylesheet" href="../css/button.css" />
+    <link rel="shortcut icon" href="../STONKS.png">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script type="text/javascript" src="../javascript/quearyMarket.js"></script>
+    <script type="text/javascript" src="../javascript/darkMode.js"></script>
+</head>
+
+<body onload="main()">
+    <header>
+        <a href="index.html">
+            <h1 class="logoName">Stonks Market</h1>
+        </a>
+        <nav>
+            <div id="navbar">
+                <ul class="links-for-navigation">
+                    <div class="dropdown">
+                        <button class="dropbtn">Home</button>
+                        <div class="dropdown-content">
+                            <a href="index.html">Introduction</a>
+                            <a href="index.html">Menu</a>
+                            <a href="documentation.html" target="_blank">Documentation</a>
+                            <!-- <a href="buyStocks.html">Buy Stocks</a> -->
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Dashboard</button>
+                        <div class="dropdown-content">
+                            <a href="dashboard.html">Leaderboard</a>
+                            <a href="dashboard.html">Transactions</a>
+                            <a href="dashboard.html#newsfeed">Newsfeed</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Market</button>
+                        <div class="dropdown-content">
+                            <a href="#companyChart">Graphs</a>
+                            <a href="#stonks">Companies</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">CSS</button>
+                        <div class="dropdown-content">
+                            <a href="https://cssbristol.co.uk/about/" target="_blank">About Us</a>
+                            <a href="feedback.html">Feedback</a>
+                            <a href="https://cssbristol.co.uk/contact/" target="_blank">Contact a CSS member</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <hr>
+    <div class="below-navbar">
+        <button onclick="myFunction()">Dark mode</button>
+
+        <div class="main">
+            <h1 id="graphTitle">Stock price - Recent behaviour</h1>
+
+            <div class="graphs">
+                <!-- The javascript will put the graph in here \-->
+                <canvas id="companyChart" width="800" height="350"></canvas>
+                <button onclick="setChartBehaviour('recent')"> Show recent behaviour (20 minutes)</button>
+                <button onclick="setChartBehaviour('long')"> Show long term behaviour (an hour)</button>
+                <button onclick="setChartBehaviour('lifetime')"> Show lifetime behaviour</button>
+            </div>
+            <div class="explanatory-text">
+                <p>
+                    The idea is that each team could have the amount of money the have here, and over time the scale on the left will increase to match that of the winning team. It will be getting this data with some javascript that will queary the main stock market in real
+                    time.
+                </p>
+                <br>
+                <hr><br><br>
+            </div>
+            <div class="table">
+                <!-- The javascript will put all companies in this table and update their values \-->
+                <h3>Toggle up to 7 companies simultaneously on the graph </h3>
+                <table id="stonks">
+
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="footer">
+            <footer>
+                If the tables or the graphs shown above are frozen please refresh the page. If the problem persists refer to our feedback/contact section.
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

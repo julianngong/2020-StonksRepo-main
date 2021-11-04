@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/nav-bar.css" />
+    <link rel="stylesheet" href="../css/button.css" />
+    <link rel="shortcut icon" href="../STONKS.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--Get some nice bar chart libs\-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <!-- Our own code to HTTP request the Java \-->
+    <script type="text/javascript" src="../javascript/quearyPlayers.js"></script>
+    <script type="text/javascript" src="../javascript/darkMode.js"></script>
+</head>
+
+<body onload="main()">
+    <header>
+        <a href="index.html">
+            <h1 class="text">Stonks Market</h1>
+        </a>
+        <nav>
+            <div id="navbar">
+                <ul class="links-for-navigation">
+                    <div class="dropdown">
+                        <button class="dropbtn">Home</button>
+                        <div class="dropdown-content">
+                            <a href="index.html">Introduction</a>
+                            <a href="index.html">Menu</a>
+                            <a href="documentation.html" target="_blank">Documentation</a>
+                            <!-- <a href="buyStocks.html">Buy Stocks</a> -->
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Dashboard</button>
+                        <div class="dropdown-content">
+                            <a href="#container">Leaderboard</a>
+                            <a href="#">Transactions</a>
+                            <a href="#newsfeed">Newsfeed</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Market</button>
+                        <div class="dropdown-content">
+                            <a href="market.html">Graphs</a>
+                            <a href="market.html">Companies</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">CSS</button>
+                        <div class="dropdown-content">
+                            <a href="https://cssbristol.co.uk/about/" target="_blank">About Us</a>
+                            <a href="feedback.html">Feedback</a>
+                            <a href="https://cssbristol.co.uk/contact/" target="_blank">Contact a CSS member</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+        <br>
+
+    </header>
+    <hr>
+    <div class="below-navbar">
+        <button onclick="myFunction()">Dark mode</button>
+        <div class="row">
+            <div class="column left">
+                <h2>Leaderboard graph</h2>
+                <div class="leaderboardgraph">
+                    <!-- Graph for the player bot leaderboard -->
+                    <canvas id="leaderboardGraph" width="380" height="150" style="margin-right: 1%;"></canvas>
+                </div>
+                <hr>
+                <div id="transactionHistory">
+                    <h1>Transaction history</h1>
+                    <p>Here are displayed all the transactions made by the bots.</p>
+                    <table id="transactionTable">
+                        <tr>
+                            <th>Trader</th>
+                            <th>Stock involved</th>
+                            <th>Number of stocks</th>
+                            <th>Transaction type</th>
+                            <th>Value at transaction</th>
+                        </tr>
+                    </table>
+                    <br>
+                </div>
+            </div>
+            <div class="column-right">
+                <aside class="column right" id="Recent_News_Feed" style="width: 100%;">
+                    <a name="newsfeed"></a>
+                    <h2>Recent News</h2>
+                </aside>
+            </div>
+        </div>
+        <hr>
+        <div class="footer">
+            <footer>
+                If the tables or the graphs shown above are frozen please refresh the page. If the problem persists refer to our feedback/contact section.
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

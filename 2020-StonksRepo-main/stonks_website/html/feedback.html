@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="../css/nav-bar.css" />
+    <link rel="stylesheet" href="../css/button.css" />
+    <link rel="stylesheet" href="../css/feedback.css" />
+    <link rel="shortcut icon" href="../STONKS.png">
+
+    <script type="text/javascript" src="../javascript/darkMode.js"></script>
+    <script type="text/javascript" src="../javascript/sendFeedback.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="index.html">
+            <h1 class="logoName">Stonks Market</h1>
+        </a>
+        <nav>
+            <div id="navbar">
+                <ul class="links-for-navigation">
+                    <div class="dropdown">
+                        <button class="dropbtn">Home</button>
+                        <div class="dropdown-content">
+                            <a href="index.html">Introduction</a>
+                            <a href="index.html">Menu</a>
+                            <a href="documentation.html">Documentation</a>
+                            <!-- <a href="buyStocks.html">Buy Stocks</a> -->
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Dashboard</button>
+                        <div class="dropdown-content">
+                            <a href="dashboard.html">Leaderboard</a>
+                            <a href="dashboard.html">Transactions</a>
+                            <a href="dashboard.html#newsfeed">Newsfeed</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Market</button>
+                        <div class="dropdown-content">
+                            <a href="market.html">Graphs</a>
+                            <a href="market.html">Companies</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">CSS</button>
+                        <div class="dropdown-content">
+                            <a href="https://cssbristol.co.uk/about/" target="_blank">About Us</a>
+                            <a href="feedback.html">Feedback</a>
+                            <a href="https://cssbristol.co.uk/contact/" target="_blank">Contact a CSS member</a>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <hr>
+    <button onclick="myFunction()">Dark mode</button>
+
+    <div class="forms">
+        <form action="submission.html" method="POST">
+            <div class="overall">
+                <h1>Rate us!</h1>
+                <section class="overall">
+                    <label for="experience" style="font-size: 25px;">How was your overall experience browsing our website?</label>
+                    <br>
+                    <span>1(awful)</span>
+                    <input type="range" name="experience" id="experience" value="5" min="1" max="10" class="slider">
+                    <span>10(perfect)</span>
+                </section>
+                <hr>
+            </div>
+            <div class="age-span">
+                <section class="age-spans">
+                    <p style="font-size: 30px; margin: 0px;">What is your age?</p>
+                    <br>
+                    <label class="container">Under 18
+                        <input type="checkbox" id="0-18" value="0-18">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">18-25
+                        <input type="checkbox" id="18-25" value="18-25">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">25-45
+                        <input type="checkbox" id="25-45" value="25-45">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">45 or more
+                        <input type="checkbox" id="45+" value="45+">
+                        <span class="checkmark"></span>
+                    </label>
+                </section>
+                <hr>
+            </div>
+            <div class="darkmode">
+                <section class="darkMode">
+                    <p style="margin: 0px; font-size: 25px;">Did you like "dark mode"?</p>
+                    <br>
+                    <label class="container">Yes
+                        <input type="radio" checked="checked" name="darkMode" id="yes" value="yes">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">No
+                        <input type="radio" name="darkMode" id="no" value="no">
+                        <span class="checkmark"></span>
+                    </label>
+                </section>
+                <hr>
+            </div>
+            <div class="features">
+                <section class="features">
+                    <label for="features" style="font-size: 25px;">What feature did you like the most?</label>
+                    <div class="select">
+                        <select name="feature" id="feature" style="margin: 2%;">
+                            <option value="transactions history">Transactions history</option>
+                            <option value="darkMode">Dark mode</option>
+                            <option value="Company list">Company List</option>
+                            <option value="Stock price behaviour">Stock price graph - time behaviour</option>
+                        </select>
+                    </div>
+                </section>
+                <hr>
+            </div>
+            <div class="recommendation">
+                <section class="recommendation">
+                    <label for="recommendation" style="font-size: 25px;">How likely would you be to recommend "Stonks Market" to your friends or colleagues?</label>
+                    <!-- <input list="recommendations" id="recommendation" name="recommendation" style="margin: 3%;"> -->
+                    <div class="select">
+                        <select id="recommendation" name="recommendation">
+                            <option value="Not at all">Not at all</option>
+                            <option value="Unlikely">Unlikely</option>
+                            <option value="Neutral">Neutral</option>
+                            <option value="Likely">Likely</option>
+                            <option value="Absolutely">Absolutely</option>
+                        </select>
+                    </div>
+                </section>
+                <hr>
+            </div>
+            <div class="extra-info">
+                <section class="extra-info">
+                    <label for="extra" style="font-size: 25px;">Anything else you want to add?</label>
+                    <br>
+                    <textarea id="extra" name="extra" rows="5" cols="90" style="margin: auto;"></textarea>
+                </section>
+            </div>
+            <div class="submission">
+                <section class="submission">
+                    <!-- <form action="../submission.html"> -->
+                    <input type="button" value="Submit" onclick="gatherAllDataAndSendEmail()">
+                    <!-- </form> -->
+                </section>
+            </div>
+        </form>
+    </div>
+    <div class="footer">
+        <hr>
+        <footer>
+            <p class="developers">Any data gathered from the feedback section are <strong>only</strong> meant to be used for further improvements.</p>
+        </footer>
+    </div>
+    <p id="javascriptTool"></p>
+
+</body>
+
+</html>
